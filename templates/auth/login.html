@@ -1,0 +1,60 @@
+{% extends 'master.html' %}
+{% block titulo %}Login{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" style="color: #fff; border-radius: 0px; background-color: #07080D;">Iniciar</div>
+
+                <div class="card-body">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form method="POST" action="{{ url_for('login_page') }}" autocomplete="off">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">  <!-- Agregar el token CSRF aquí -->
+                        <input type="hidden" name="next" value="{{ request.args.get('next') }}">  <!-- Almacenar la URL a la que intentaba acceder -->
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="email" type="email" placeholder="Añadir Email" class="input-stand3" name="email" value="{{ request.form.email }}" required autocomplete="new-email">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="password" type="password" placeholder="Contraseña" class="input-stand3" name="password" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-check" style="margin-top: 20px;">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" style="border-radius: 0px; border: 2px solid #FCEE00; background-color: #000; margin-left: 10px;">
+                                    <label class="form-check-label" for="remember" style="color: #fff; border-radius: 0px; background-color: transparent; margin-left: 30px;">
+                                        Recordar
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button type="submit" class="btn-mdf" style="width: 30%; margin-left: 30px; margin-top: 20px;">
+                                    Iniciar
+                                </button>
+                                <a class="btn btn-link" href="#" style="font-family: 'Hind Siliguri', sans-serif; font-weight: 700; color: #FCEE00; border-radius: 0px; background-color: transparent; margin-left: 30px; margin-top: 20px;">
+                                    ¿Olvidaste tu contraseña?
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

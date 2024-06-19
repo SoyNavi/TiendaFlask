@@ -1,0 +1,58 @@
+{% extends 'master.html' %}
+{% block titulo %}Registro{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header" style="color: #fff; border-radius: 0px; background-color: #07080D;">Registrar</div>
+
+                <div class="card-body">
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                        {% if messages %}
+                            {% for category, message in messages %}
+                                <div class="alert alert-{{ category }}">{{ message }}</div>
+                            {% endfor %}
+                        {% endif %}
+                    {% endwith %}
+                    <form method="POST" action="{{ url_for('register_page') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}"> <!-- Agregar el token CSRF aquí -->
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input id="name" type="text" class="input-stand3" placeholder="Nombre" name="name" value="{{ request.form.name }}" required autocomplete="name" autofocus>
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="input-stand3" placeholder="Añadir Email" name="email" value="{{ request.form.email }}" required autocomplete="email">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="input-stand3" placeholder="Contraseña" name="password" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" class="input-stand3" placeholder="Confirmar Contraseña" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row mb-0">
+                            <div class="col-md-6">
+                                <button type="submit" class="btn-mdf" style="width: 30%; margin-left: 30px; margin-top: 20px;">
+                                    Registrar
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

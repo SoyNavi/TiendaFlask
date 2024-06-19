@@ -1,0 +1,61 @@
+{% extends 'master.html' %}
+{% block titulo %}Restablecer{% endblock %}
+{% block contenido %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card" style="border-radius: 0px;">
+                <div class="card-header" style="color: #fff; border-radius: 0px; background-color: #07080D;">{{ _('Restablecer Contraseña') }}</div>
+
+                <div class="card-body">
+                    <form method="POST" action="{{ url_for('password_update') }}">
+                        {{ csrf_token() }}
+                        <input type="hidden" name="_method" value="PUT">
+
+                        <input type="hidden" name="token" value="{{ token }}">
+                        <input type="hidden" name="email" value="{{ email }}">
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="email" type="email" placeholder="Añadir Email" class="input-stand3" name="email" value="{{ email }}" required autocomplete="email" autofocus>
+
+                                {% if errors.has('email') %}
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ errors.first('email') }}</strong>
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="password" type="password" placeholder="Contraseña" class="input-stand3" name="password" required autocomplete="new-password">
+
+                                {% if errors.has('password') %}
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ errors.first('password') }}</strong>
+                                    </span>
+                                {% endif %}
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <input id="password-confirm" type="password" placeholder="Confirmar Contraseña" class="input-stand3" name="password_confirmation" required autocomplete="new-password">
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-8">
+                                <button type="submit" class="btn-mdf" style="width: 30%; margin-left: 30px; margin-top: 20px;">
+                                    {{ _('Restablecer Contraseña') }}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,185 @@
+{% extends 'master.html' %}
+{% block titulo %}Listado de Perfiles{% endblock %}
+{% block contenido %}
+<div class="container text-center">
+    <h2 style="color: #fff;">Listado de Perfiles</h2>
+    <!-- Botón para abrir el formulario de creación -->
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#createPerfilModal" style="
+            background-color: transparent;
+            width: 30%;
+            color: #FCEE00; 
+            font-weight: bold;
+            border-radius: 0px;
+            border: 4px solid #FCEE00;" onmouseover="this.style.color='#fff'; this.style.borderColor='#fff';"
+        onmouseout="this.style.color='#FCEE00'; this.style.borderColor='#FCEE00';">
+        Crear Nuevo Perfil
+    </button>
+
+    <!-- Formulario de creación -->
+    <div class="modal fade" id="createPerfilModal" tabindex="-1" role="dialog" aria-labelledby="createPerfilModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="createPerfilModalLabel">Crear Perfil</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{ url_for('perfiles_create') }}">
+                        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                        <div class="form-group">
+                            <input type="text" name="nombre" class="form-control" required
+                                placeholder="Nombre del perfil...">
+                        </div>
+                        <button type="submit" class="btn btn-success">Guardar Perfil</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulario de búsqueda -->
+    <form class="form-inline justify-content-center mt-3" action="{{ url_for('perfiles_index') }}" method="GET">
+        <div class="form-group">
+            <input type="text" class="form-control" name="search" placeholder="Buscar por nombre" value="{{ search }}">
+        </div>
+        <button type="submit" class="btn btn-primary ml-2">Buscar</button>
+    </form>
+
+    <!-- Tabla de perfiles -->
+    <table class="table table-striped" style="border-radius: 0px; border: 4px solid #FCEE00; margin-top: 25px;">
+        <thead>
+            <tr>
+                <th scope="col" style="color: #FCEE00; background-color: transparent;">Actualizar</th>
+                <th scope="col" style="color: #FCEE00; background-color: transparent;">Eliminar</th>
+                <th scope="col" style="color: #FCEE00; background-color: transparent;">Id</th>
+                <th scope="col" style="color: #FCEE00; background-color: transparent;">Nombre</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for perfil in perfiles.items %}
+            <tr>
+                <td style="background-color: #07080D;">
+                    <!-- Botón de editar perfil -->
+                    <button type="button" class="btn-mdf" data-bs-toggle="modal"
+                        data-bs-target="#updatePerfilModal{{ perfil.id }}">
+                        <i class="bi bi-pencil-square edit-btn"></i>
+                    </button>
+                </td>
+                <td style="background-color: #07080D;">
+                    <!-- Botón de eliminar perfil -->
+                    <button type="button" class="btn-elm" data-bs-toggle="modal"
+                        data-bs-target="#deletePerfilModal{{ perfil.id }}">
+                        <i class="bi bi-trash"></i>
+                    </button>
+                </td>
+                <td style="color: #FFF; background-color: #07080D; font-weight: bold;">{{ perfil.id }}</td>
+                <td style="color: #FFF; background-color: #07080D; font-weight: bold;">{{ perfil.nombre }}</td>
+            </tr>
+            <!-- Modal de edición -->
+            <div class="modal fade" id="updatePerfilModal{{ perfil.id }}" tabindex="-1" role="dialog"
+                aria-labelledby="updatePerfilModalLabel{{ perfil.id }}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="updatePerfilModalLabel{{ perfil.id }}">Actualizar Perfil</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form method="POST" action="{{ url_for('perfiles_update', id=perfil.id) }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_method" value="PUT">
+                                <div class="form-group">
+                                    <input type="text" name="nombre" class="form-control" required
+                                        placeholder="Nombre del perfil..." value="{{ perfil.nombre }}">
+                                </div>
+                                <button type="submit" class="btn btn-success">Actualizar Perfil</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Modal de eliminación -->
+            <div class="modal fade" id="deletePerfilModal{{ perfil.id }}" tabindex="-1" role="dialog"
+                aria-labelledby="deletePerfilModalLabel{{ perfil.id }}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="deletePerfilModalLabel{{ perfil.id }}">Eliminar Perfil</h5>
+                            <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>¿Deseas eliminar el perfil "{{ perfil.nombre }}"?</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <form method="POST" action="{{ url_for('perfiles_destroy', id=perfil.id) }}">
+                                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="btn btn-danger">Eliminar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <!-- Paginación -->
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            {% if perfiles.has_prev %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('perfiles_index', page=perfiles.prev_num, search=search) }}"
+                    aria-label="Previous">
+                    <span aria-hidden="true">&laquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&laquo;</span>
+            </li>
+            {% endif %}
+
+            {% for page_num in perfiles.iter_pages() %}
+            {% if page_num %}
+            {% if page_num == perfiles.page %}
+            <li class="page-item active"><span class="page-link">{{ page_num }}</span></li>
+            {% else %}
+            <li class="page-item"><a class="page-link"
+                    href="{{ url_for('perfiles_index', page=page_num, search=search) }}">{{ page_num }}</a></li>
+            {% endif %}
+            {% else %}
+            <li class="page-item disabled"><span class="page-link">...</span></li>
+            {% endif %}
+            {% endfor %}
+
+            {% if perfiles.has_next %}
+            <li class="page-item">
+                <a class="page-link" href="{{ url_for('perfiles_index', page=perfiles.next_num, search=search) }}"
+                    aria-label="Next">
+                    <span aria-hidden="true">&raquo;</span>
+                </a>
+            </li>
+            {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-hidden="true">&raquo;</span>
+            </li>
+            {% endif %}
+        </ul>
+    </nav>
+</div>
+
+<script>
+    // Agregar un evento para limpiar el formulario de edición cuando se cierre el modal
+    $('[id^="editarPerfilesModal"]').on('hidden.bs.modal', function (e) {
+        // Limpiar los campos del formulario
+        $(this).find('form')[0].reset();
+    });
+</script>
+{% endblock %}

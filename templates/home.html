@@ -1,0 +1,23 @@
+{% extends 'layouts/app.html' %}
+
+{% block content %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ _('Dashboard') }}</div>
+
+                <div class="card-body">
+                    {% if session.get('status') %}
+                        <div class="alert alert-success" role="alert">
+                            {{ session.get('status') }}
+                        </div>
+                    {% endif %}
+
+                    {{ _('You are logged in!') }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

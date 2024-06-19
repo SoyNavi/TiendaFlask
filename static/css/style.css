@@ -1,0 +1,404 @@
+/* styles.css */
+
+/* Añadir estilos de fuente */
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Oswald:wght@200..700&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap');
+
+html, body {
+    background-color: #07080D; /* Fondo negro puro */
+    font-family: "Hind Siliguri", sans-serif;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    color: #f8f9fa; /* Texto en color blanco/gris claro */
+}
+
+.container {
+    margin-top: 200px;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.card-header {
+    background-color: #07080D;
+    color: #FCEE00; 
+    font-weight: bold;
+    border-radius: 0px;
+    border: 4px solid #fff;
+}
+
+.card-body {
+    background-color: #07080D;
+    color: #FCEE00; 
+    font-weight: bold;
+    border-radius: 0px;    
+    border: 4px solid #fff;
+}
+
+.card {
+    background-color: #07080D; 
+    border: 1px solid #07080D; 
+    border-radius: .25rem;
+}
+
+.card-header h3 {
+    color: #f8f9fa; /* Texto en blanco/gris claro */
+}
+
+.input-group-prepend span {
+    background-color: #d4af37; /* Fondo dorado */
+    color: #07080D; /* Texto en negro */
+    border: 0 !important;
+}
+
+.input:focus {
+    outline: 0 !important;
+    box-shadow: none !important;
+}
+
+.login_btn {
+    background-color: #d4af37; /* Botón de login en dorado */
+    color: #07080D; /* Texto en negro */
+    width: 100%;
+}
+
+.login_btn:hover {
+    background-color: #c49a2d; /* Hover en un dorado más oscuro */
+    color: #07080D;
+}
+
+.social_icon span {
+    color: #d4af37; /* Iconos sociales en dorado */
+}
+
+.social_icon span:hover {
+    color: #c49a2d; /* Hover en dorado más oscuro */
+    cursor: pointer;
+}
+
+.links {
+    color: #d4af37; /* Enlaces en dorado */
+}
+
+.links a {
+    margin-left: 4px;
+    color: #d4af37; /* Enlaces en dorado */
+}
+
+.input-group-text_1 {
+    background-color: #dbdbdb;
+    color: #333;
+    padding: 10px 0;
+    border: none; /* Elimina el borde predeterminado */
+    width: 10%; /* Ajusta el ancho para que sea más largo */
+    border-radius: 10px; /* Redondea los bordes */
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+}
+
+.bimail {
+    width: 30px;
+    height: 30px;
+    margin-left: 20%;
+}
+
+.email-form {
+    background-color: #000;
+    padding-left: 10px;
+    width: 100%; /* Ajusta el ancho para que sea más largo */
+    box-sizing: border-box; /* Asegura que el padding no afecte al ancho total */
+    border-radius: 0px; 
+    border: 4px solid #FFF; 
+    color: #FFF; 
+    font-weight: bold;
+}
+
+.email-form:focus {
+    outline: none;
+}
+
+.email-form::placeholder {
+    color: #FFF; 
+}
+
+.form-control::placeholder {
+    color: #FFF;
+}
+
+.footer {
+    font-family: "Hind Siliguri", sans-serif;
+    background-color: #07080D; /* Fondo del footer en negro puro */
+    color: #fff; /* Texto en blanco/gris claro */
+    padding: 0;
+    border-top: 1px solid #07080D; /* Borde superior más oscuro */
+}
+.container {
+    background-color: #07080D;
+}
+
+.container h1 {
+    color: #fff;
+}
+
+.container .text-center {
+    background-color: #07080D;
+    margin-top: 0;
+}
+
+.carousel .slide .carousel-fade {
+    margin-top: 0;
+}
+
+h2 {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+}
+
+.footer h3 {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+}
+
+.footer .container_part_1 {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    margin-right: 50px;
+    margin-left: 50px;
+}
+
+.footer a {
+    color: #fff; /* Enlaces del footer en dorado */
+    text-decoration: none;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+    color: #FCEE00;
+}
+
+.container-fluid{
+    background-color: #000;
+    margin: 0;
+}
+
+.nav-item .nav-link { 
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    color: #FCEE00;
+}
+
+.nav-item .nav-link:hover { 
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    color: #fff;
+}
+
+.navbar{
+    margin-top: -10px;
+}
+
+.dropdown-menu .dropdown-item {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    background-color: #000;
+    color: #FCEE00;
+}
+
+.navbar .navbar-expand-md {
+    background-color: #000;
+    color: #fff;
+}
+
+/* Nuevas clases personalizadas */
+.text-gold {
+    color: #fff; /* Color dorado */
+}
+
+.link-gold {
+    color: #FCEE00; /* Enlaces en dorado */
+}
+
+.bg-gold {
+    background-color: #FCEE00; /* Fondo dorado */
+}
+
+.btn-suscribir {
+    background-color: transparent; /* Botón dorado */
+    width: 100%;
+    color: #FCEE00; /* Texto negro */
+    font-weight: bold;
+    border: 4px solid #FCEE00;
+}
+
+.btn-suscribir:hover {
+    background-color: transparent; /* Hover en dorado más oscuro */
+    color: #FFF;
+    font-weight: bold;
+    border: 4px solid #fff;
+}
+
+.btn-cliente {
+    background-color: transparent;
+    width: 100%;
+    color: #FCEE00; 
+    font-weight: bold;
+    margin-left: 80%;
+    border-radius: 0px;
+    border: 4px solid #FCEE00;
+}
+
+.btn-cliente:hover {
+    background-color: transparent; /* Hover en dorado más oscuro */
+    color: #FFF;
+    font-weight: bold;
+    border: 4px solid #fff;
+}
+
+.input-stand {
+    border-radius: 0px; 
+    padding: 10px;
+    border: 4px solid #FFF; 
+    background-color: #000; 
+    color: #FFF; 
+    width: 100%;
+    font-weight: bold;
+}
+
+.input-stand::placeholder {
+    color: #FFF;
+    font-weight: bold;
+}
+
+.input-stand:focus {
+    outline: none;
+    border-radius: 0px; 
+    padding: 10px;
+    border: 4px solid #FFF; 
+    background-color: #fcee00; 
+    color: #000; 
+    width: 100%;
+    font-weight: bold;
+}
+
+.input-stand:focus::placeholder {
+    color: #000;
+    font-weight: bold;
+}
+
+.input-stand2 {
+    border-radius: 0px; 
+    padding: 10px;
+    border: 4px solid #FFF; 
+    background-color: #000; 
+    color: #FFF; 
+    width: 79%;
+    font-weight: bold;
+}
+
+.input-stand2::placeholder {
+    color: #FFF;
+    font-weight: bold;
+}
+
+.input-stand2:focus {
+    outline: none;
+    border-radius: 0px; 
+    padding: 10px;
+    border: 4px solid #FFF; 
+    background-color: #fcee00; 
+    color: #000; 
+    width: 79%;
+    font-weight: bold;
+}
+
+.input-stand2:focus::placeholder {
+    color: #000;
+    font-weight: bold;
+}
+
+.input-stand3 {
+    font-family: "Hind Siliguri", sans-serif;
+    font-weight: 700;
+    border-radius: 0px; 
+    padding: 10px;
+    border: 4px solid #FFF; 
+    background-color: #000; 
+    color: #FFF;
+    margin-top: 20px;
+    margin-left: 30px;
+    width: 100%;
+    font-weight: bold;
+}
+
+.input-stand3::placeholder {
+    color: #FFFFFF80;
+    font-weight: bold;
+}
+
+.input-stand3:focus {
+    outline: none;
+    border-radius: 0px; 
+    padding: 10px;
+    border: 4px solid #FFF; 
+    background-color: #fcee00; 
+    color: #000; 
+    width: 100%;
+    font-weight: bold;
+}
+
+.input-stand3:-webkit-autofill {
+    font-family: "Hind Siliguri", sans-serif !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 0 30px #fcee00 inset !important;
+    -webkit-box-shadow: 0 0 0 30px #fcee00 inset !important;
+    background-color: #fcee00 !important;
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+.input-stand3:-webkit-autofill:focus {
+    font-family: "Hind Siliguri", sans-serif !important;
+    font-weight: 700 !important;
+    box-shadow: 0 0 0 30px #fcee00 inset !important;
+    -webkit-box-shadow: 0 0 0 30px #fcee00 inset !important;
+    background-color: #fcee00 !important;
+    color: #000 !important;
+    font-weight: bold !important;
+}
+
+.input-stand3:focus::placeholder {
+    color: #000;
+    font-weight: bold;
+}
+
+.btn-mdf {
+    background-color: transparent;
+    color: #FCEE00; 
+    width: 100px;
+    font-weight: bold;
+    border-radius: 0px;
+    border: 4px solid #FCEE00;
+}
+
+.btn-mdf:hover {
+    background-color: transparent;
+    color: #FFF;
+    font-weight: bold;
+    border: 4px solid #fff;
+}
+
+.btn-elm {
+    background-color: transparent;
+    color: #fc0000; 
+    width: 100px;
+    font-weight: bold;
+    border-radius: 0px;
+    border: 4px solid #fc0000;
+}
+
+.btn-elm:hover {
+    background-color: transparent;
+    color: #FFF;
+    font-weight: bold;
+    border: 4px solid #fff;
+}
